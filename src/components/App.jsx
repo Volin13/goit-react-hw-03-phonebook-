@@ -1,13 +1,27 @@
 import React, { Component } from 'react';
 import { Section, Filter, Contacts, NewContactForm, Container } from './index';
-import phonebook from '../data/phonebook.json';
+// import phonebook from '../data/phonebook.json';
 import { nanoid } from 'nanoid';
 
 export class App extends Component {
   state = {
-    contacts: [...phonebook],
+    contacts: [],
     filter: '',
   };
+  componentDidMount() {
+    const savedData = localStorage.getItem('contacts');
+    const parsedData = JSON.parse(savedData);
+    if (parsedData) {
+      return this.setState({ contacts: parsedData });
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const saveToLocalData = JSON.stringify(this.state.contacts);
+    if (prevState.contacts.length !== this.state.contacts.length) {
+      localStorage.setItem('contacts', saveToLocalData);
+    }
+  }
 
   addContact = ({ name, number }) => {
     if (
@@ -15,7 +29,7 @@ export class App extends Component {
         contact => contact.name.toLowerCase() === name.toLowerCase()
       )
     ) {
-      alert('There is no such contact');
+      alert('This contact already exsists');
     } else {
       this.setState(prevState => ({
         contacts: [
@@ -42,6 +56,14 @@ export class App extends Component {
       name.toLowerCase().includes(this.state.filter)
     );
   };
+
+  // export const remove = key => {
+  //   try {
+  //     localStorage.removeItem(key);
+  //   } catch (error) {
+  //     console.log('Remove item error: ', error.message);
+  //   }
+  // };
 
   removeContact = idToRemove => {
     this.setState(({ contacts }) => ({
