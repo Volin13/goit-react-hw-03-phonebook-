@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "//volin13.github.io/goit-react-hw-02-phonebook/static/css/main.8aad717f.css",
+    "main.js": "//volin13.github.io/goit-react-hw-02-phonebook/static/js/main.edefa472.js",
+    "index.html": "//volin13.github.io/goit-react-hw-02-phonebook/index.html",
+    "main.8aad717f.css.map": "//volin13.github.io/goit-react-hw-02-phonebook/static/css/main.8aad717f.css.map",
+    "main.edefa472.js.map": "//volin13.github.io/goit-react-hw-02-phonebook/static/js/main.edefa472.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8aad717f.css",
+    "static/js/main.edefa472.js"
+  ]
+}
